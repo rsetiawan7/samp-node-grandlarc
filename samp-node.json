@@ -1,0 +1,10 @@
+{
+  "log_level": 4,
+  "enable_resources": true,
+  "entry_file": "index.js",
+  "node_flags": [],
+  "resources_path": "resources",
+  "resources": [
+    "grandlarc"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "samp-node-grandlarc",
+  "version": "1.0.0",
+  "description": "A SA-MP gamemodes that converts grandlarc into Node.js",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf resources/",
+    "copy:files": "copyfiles -u 1 src/**/resource-config.json resources/",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "tsc",
+    "postbuild": "npm run copy:files"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rsetiawan7/samp-node-grandlarc.git"
+  },
+  "keywords": [
+    "sa-mp",
+    "nodejs",
+    "grandlarc"
+  ],
+  "author": "Rachmad Setiawan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rsetiawan7/samp-node-grandlarc/issues"
+  },
+  "homepage": "https://github.com/rsetiawan7/samp-node-grandlarc#readme",
+  "dependencies": {
+    "samp-node-lib": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.20",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.1.3"
+  }
+}
