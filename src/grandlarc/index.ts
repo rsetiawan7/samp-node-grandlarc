@@ -399,23 +399,23 @@ OnGameModeInit(() => {
   // TextDraw
   ClassSelectionInitTextDraws();
 
-  // LoadStaticVehiclesFromFile('trains.txt');
-  // LoadStaticVehiclesFromFile('pilots.txt');
-  // LoadStaticVehiclesFromFile('lv_law.txt');
-  // LoadStaticVehiclesFromFile('lv_airport.txt');
-  // LoadStaticVehiclesFromFile('lv_gen.txt');
-  // LoadStaticVehiclesFromFile('sf_law.txt');
-  // LoadStaticVehiclesFromFile('sf_airport.txt');
-  // LoadStaticVehiclesFromFile('sf_gen.txt');
-  // LoadStaticVehiclesFromFile('ls_law.txt');
-  // LoadStaticVehiclesFromFile('ls_airport.txt');
-  // LoadStaticVehiclesFromFile('ls_gen_inner.txt');
-  // LoadStaticVehiclesFromFile('ls_gen_outer.txt');
-  // LoadStaticVehiclesFromFile('whetstone.txt');
-  // LoadStaticVehiclesFromFile('bone.txt');
-  // LoadStaticVehiclesFromFile('flint.txt');
-  // LoadStaticVehiclesFromFile('tierra.txt');
-  // LoadStaticVehiclesFromFile('red_county.txt');
+  LoadStaticVehiclesFromFile('trains.txt');
+  LoadStaticVehiclesFromFile('pilots.txt');
+  LoadStaticVehiclesFromFile('lv_law.txt');
+  LoadStaticVehiclesFromFile('lv_airport.txt');
+  LoadStaticVehiclesFromFile('lv_gen.txt');
+  LoadStaticVehiclesFromFile('sf_law.txt');
+  LoadStaticVehiclesFromFile('sf_airport.txt');
+  LoadStaticVehiclesFromFile('sf_gen.txt');
+  LoadStaticVehiclesFromFile('ls_law.txt');
+  LoadStaticVehiclesFromFile('ls_airport.txt');
+  LoadStaticVehiclesFromFile('ls_gen_inner.txt');
+  LoadStaticVehiclesFromFile('ls_gen_outer.txt');
+  LoadStaticVehiclesFromFile('whetstone.txt');
+  LoadStaticVehiclesFromFile('bone.txt');
+  LoadStaticVehiclesFromFile('flint.txt');
+  LoadStaticVehiclesFromFile('tierra.txt');
+  LoadStaticVehiclesFromFile('red_county.txt');
 });
 
 OnPlayerConnect(player => {
