@@ -60,6 +60,11 @@ let txtLasVenturas: number;
 /**
  * Functions
  */
+// Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+const GetRandomInt = (max: number) => {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
 const PlayerGetCitySelection = (player: SampPlayer): number => {
   if (!player) {
     return 0;
@@ -241,7 +246,6 @@ const ClassSelectionSwitchToNextCity = (player: SampPlayer) =>
 {
   PlayerSetCitySelection(player, PlayerGetCitySelection(player) + 1);
 
-  player.SendClientMessage(COLOR_WHITE, `citySelection: ${PlayerGetCitySelection(player)}`);
   if (PlayerGetCitySelection(player) > CITY_LAS_VENTURAS) {
     PlayerSetCitySelection(player, CITY_LOS_SANTOS);
   }
@@ -255,7 +259,6 @@ const ClassSelectionSwitchToPreviousCity = (player: SampPlayer) =>
 {
   PlayerSetCitySelection(player, PlayerGetCitySelection(player) - 1);
 
-  player.SendClientMessage(COLOR_WHITE, `citySelection: ${PlayerGetCitySelection(player)}`);
   if (PlayerGetCitySelection(player) < CITY_LOS_SANTOS) {
     PlayerSetCitySelection(player, CITY_LAS_VENTURAS);
   }
@@ -463,21 +466,20 @@ OnPlayerSpawn(player => {
   player.ResetPlayerMoney();
   player.GivePlayerMoney(30000);
 
-  SendClientMessageToAll(COLOR_WHITE, `citySelection: ${PlayerGetCitySelection(player)}`);
   if (PlayerGetCitySelection(player) === CITY_LOS_SANTOS) {
-    randomSpawn = RANDOM_SPAWNS_LS.length;
+    randomSpawn = GetRandomInt(RANDOM_SPAWNS_LS.length);
     const randomPos = RANDOM_SPAWNS_LS[randomSpawn];
 
     player.SetPlayerPos(randomPos[0], randomPos[1], randomPos[2]);
     player.SetPlayerFacingAngle(randomPos[3]);
   } else if (PlayerGetCitySelection(player) === CITY_SAN_FIERRO) {
-    randomSpawn = RANDOM_SPAWNS_SF.length;
+    randomSpawn = GetRandomInt(RANDOM_SPAWNS_SF.length);
     const randomPos = RANDOM_SPAWNS_SF[randomSpawn];
 
     player.SetPlayerPos(randomPos[0], randomPos[1], randomPos[2]);
     player.SetPlayerFacingAngle(randomPos[3]);
   } else if (PlayerGetCitySelection(player) === CITY_LAS_VENTURAS) {
-    randomSpawn = RANDOM_SPAWNS_LV.length;
+    randomSpawn = GetRandomInt(RANDOM_SPAWNS_LV.length);
     const randomPos = RANDOM_SPAWNS_LV[randomSpawn];
 
     player.SetPlayerPos(randomPos[0], randomPos[1], randomPos[2]);
@@ -520,9 +522,11 @@ OnPlayerUpdate(player => {
     return 1;
   }
 
-  if (!PlayerGetCitySelected(player) && player.GetPlayerState() === PLAYER_STATE.SPECTATING) {
-    ClassSelectionHandleCitySelection(player);
-    return 1;
+  if (player.GetPlayerState() === PLAYER_STATE.SPECTATING) {
+    if (!PlayerGetCitySelected(player)) {
+      ClassSelectionHandleCitySelection(player);
+      return 1;
+    }
   }
 
   if (player.GetPlayerWeapon() === WEAPON.MINIGUN) {
