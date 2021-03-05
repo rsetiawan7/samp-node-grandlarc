@@ -43,10 +43,6 @@ export const LoadStaticVehiclesFromFile = (filename: string) => {
 
     let color1: number = Number(color1Dirty);
     let color2: number = Number(color2Dirty.split(';')[0]);
-    if (isNaN(color2)) {
-      // tslint:disable-next-line: no-console
-      console.log(`color2: ${color2} -> color2Dirty: ${color2Dirty}`);
-    }
 
     if (isNaN(color1)) {
       color1 = -1;
